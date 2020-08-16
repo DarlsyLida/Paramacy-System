@@ -1,0 +1,955 @@
+from tkinter import Tk, StringVar, ttk,messagebox
+from tkinter import *
+import time
+import datetime
+
+
+root = Tk()
+root.title("Patient Register System")
+root.geometry('1350x650+0+0')
+root.configure(background='black')
+#=============Frames======================================================
+LeftMayFrame= Frame(root, width=1000, height=650, bd=8, relief="raise")
+LeftMayFrame.pack(side=LEFT)
+RightMayFrame= Frame(root, width = 350,height = 650, bd= 8, relief="raise")
+RightMayFrame.pack(side=RIGHT)
+
+LeftMayFrame1= Frame(LeftMayFrame, width=1000, height=100, bd=8, relief="raise")
+LeftMayFrame1.pack(side=TOP)
+LeftMayFrame2= Frame(LeftMayFrame, width=1000, height=550, bd=8, relief="raise")
+LeftMayFrame2.pack(side=TOP)
+
+RightMayFrame1= Frame(RightMayFrame, width = 350,height = 215, bd= 8, relief="raise")
+RightMayFrame1.pack(side=TOP)
+RightMayFrame2= Frame(RightMayFrame, width = 350,height = 415, bd= 8, relief="raise")
+RightMayFrame2.pack(side=TOP)
+
+#===============================RightMayFrame:Images=================================================
+cont1= Canvas(RightMayFrame1,width=350,height=425,bg="black")
+cont1.grid(row=0,column=0)
+Tafa = PhotoImage(file = "Tafa.png")
+cont1.create_image(200,200, image = Tafa)
+
+#=============Variables======================================================
+DateofOrder=StringVar()
+value0= StringVar()
+value1= StringVar()
+value2= StringVar()
+value3= StringVar()
+value4= StringVar()
+value5= StringVar()
+value6= StringVar()
+value7= StringVar()
+value8= StringVar()
+value9= StringVar()
+value10= StringVar()
+value11= StringVar()
+value12= StringVar()
+
+
+def Mark_Register():
+    if value0.get()=="/":
+        value1.set("/")
+        value2.set("/")
+        value3.set("/")
+        value4.set("/")
+        value5.set("/")
+        value6.set("/")
+        value7.set("/")
+        value8.set("/")
+        value9.set("/")
+        value10.set("/")
+        value11.set("/")
+
+    elif value0.get()=="0":
+        value1.set("0")
+        value2.set("0")
+        value3.set("0")
+        value4.set("0")
+        value5.set("0")
+        value6.set("0")
+        value7.set("0")
+        value8.set("0")
+        value9.set("0")
+        value10.set("0")
+        value11.set("0")
+
+    elif value0.get()=="L":
+        value1.set("L")
+        value2.set("L")
+        value3.set("L")
+        value4.set("L")
+        value5.set("L")
+        value6.set("L")
+        value7.set("L")
+        value8.set("L")
+        value9.set("L")
+        value10.set("L")
+        value11.set("L")
+
+    elif value0.get()=="A":
+        value1.set("A")
+        value2.set("A")
+        value3.set("A")
+        value4.set("A")
+        value5.set("A")
+        value6.set("A")
+        value7.set("A")
+        value8.set("A")
+        value9.set("A")
+        value10.set("A")
+        value11.set("A")
+
+    elif value0.get()=="S":
+        value1.set("S")
+        value2.set("S")
+        value3.set("S")
+        value4.set("S")
+        value5.set("S")
+        value6.set("S")
+        value7.set("S")
+        value8.set("S")
+        value9.set("S")
+        value10.set("S")
+        value11.set("S")
+        
+    elif value0.get()==" ":
+        value1.set(" ")
+        value2.set(" ")
+        value3.set(" ")
+        value4.set(" ")
+        value5.set(" ")
+        value6.set(" ")
+        value7.set(" ")
+        value8.set(" ")
+        value9.set(" ")
+        value10.set(" ")
+        value11.set("")
+
+
+def Reset():
+    value0.set("")
+    value1.set("")
+    value2.set("")
+    value3.set("")
+    value4.set("")
+    value5.set("")
+    value6.set("")
+    value7.set("")
+    value8.set("")
+    value9.set("")
+    value10.set("")
+    value11.set("")
+
+def iExit():
+    iExit = messagebox.askyesno("Exit PatientRegistration System","Do you want?")
+    if iExit>0:
+        root.destroy()
+        return
+    
+#=============Components======================================================
+
+DateofOrder.set(time.strftime("%d/%m/%Y"))
+
+#=============LeftMayFrame1======================================================
+lblNo=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="No'",bd=15)
+lblNo.grid(row=0,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="PatientNo'",bd=15)
+lblPatientNo.grid(row=0,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="PatientName'",bd=15)
+lblPatientName.grid(row=0,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="WardNo'",bd=15)
+lblPatientWard.grid(row=0,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame1, textvariable=value0,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=0,column=4)
+
+btnFill=Button(LeftMayFrame1,text='Fill', padx=2,pady=2,bd=2, fg="black", font=('Arial',10,"bold"),width=12, height=1,command=Mark_Register).grid(row=0,column=5)
+
+
+btnReset=Button(LeftMayFrame1,text='Reset', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1,command=Reset).grid(row=0,column=6)
+
+btnExit=Button(LeftMayFrame1,text='Exit', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1, command=iExit).grid(row=0,column=7)
+
+lblDateofOrder=Label(LeftMayFrame1,font=('aril',10,'bold'), textvariable=DateofOrder,padx=2
+                     ,pady=2,bd=2,fg="black", bg='white',relief='sunken')
+lblDateofOrder.grid(row=0,column=8, sticky=W)
+
+#=============LeftMayFrame2 row1======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1'",bd=15)
+lblNo.grid(row=0,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1330'",bd=15)
+lblPatientNo.grid(row=0,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Dar'",bd=15)
+lblPatientName.grid(row=0,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="10'",bd=15)
+lblPatientWard.grid(row=0,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value1,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=0,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black", font=('Arial',10,"bold"),width=12, height=1).grid(row=0,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=0,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=0,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=0,column=8)
+
+#=============LeftMayFrame2 row2======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="2'",bd=15)
+lblNo.grid(row=1,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1331'",bd=15)
+lblPatientNo.grid(row=1,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Darl'",bd=15)
+lblPatientName.grid(row=1,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="101'",bd=15)
+lblPatientWard.grid(row=1,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value2,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=1,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=1,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=1,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=1,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=1,column=8)
+
+#=============LeftMayFrame2 row3======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="3'",bd=15)
+lblNo.grid(row=2,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1335'",bd=15)
+lblPatientNo.grid(row=2,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Darlsy'",bd=15)
+lblPatientName.grid(row=2,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="120'",bd=15)
+lblPatientWard.grid(row=2,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value3,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=2,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=2,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=2,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=2,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=2,column=8)
+
+#=============LeftMayFrame2 row4======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="4'",bd=15)
+lblNo.grid(row=3,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1336'",bd=15)
+lblPatientNo.grid(row=3,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Cynthia'",bd=15)
+lblPatientName.grid(row=3,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="123'",bd=15)
+lblPatientWard.grid(row=3,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value4,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=3,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=3,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=3,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=3,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=3,column=8)
+
+#=============LeftMayFrame2 row5======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="5'",bd=15)
+lblNo.grid(row=4,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1345'",bd=15)
+lblPatientNo.grid(row=4,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Brian'",bd=15)
+lblPatientName.grid(row=4,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="125'",bd=15)
+lblPatientWard.grid(row=4,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value5,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=4,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=4,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=4,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=4,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=4,column=8)
+
+#=============LeftMayFrame2 row6======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="6'",bd=15)
+lblNo.grid(row=5,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1346'",bd=15)
+lblPatientNo.grid(row=5,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Travor'",bd=15)
+lblPatientName.grid(row=5,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="129'",bd=15)
+lblPatientWard.grid(row=5,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value6,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=5,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=5,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=5,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=5,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=5,column=8)
+
+
+
+#=============LeftMayFrame2 row7======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="7'",bd=15)
+lblNo.grid(row=6,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1337'",bd=15)
+lblPatientNo.grid(row=6,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Daniel'",bd=15)
+lblPatientName.grid(row=6,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="121'",bd=15)
+lblPatientWard.grid(row=6,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value7,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=6,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=6,column=5)
+
+
+btnSace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=6,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=6,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=6,column=8)
+
+
+#=============LeftMayFrame2 row8======================================================
+lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="8'",bd=15)
+lblNo.grid(row=7,column=0, sticky=W)
+lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1348'",bd=15)
+lblPatientNo.grid(row=7,column=1, sticky=W)
+lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Ruth'",bd=15)
+lblPatientName.grid(row=7,column=2, sticky=W)
+lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="118'",bd=15)
+lblPatientWard.grid(row=7,column=3, sticky=W)
+                
+
+box = ttk.Combobox(LeftMayFrame2, textvariable=value8,state='readonly')
+box['values']= (' ','/','L','0','A','S')
+box.current(0)
+box.grid(row=7,column=4)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12, height=1).grid(row=7,column=5)
+
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=7,column=6)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=7,column=7)
+
+btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                font=('Arial',10,"bold"),width=12,height=1).grid(row=7,column=8)
+
+
+
+
+
+
+
+
+root.mainloop()
+                     
+
+from tkinter import *
+import tkinter .messagebox
+from tkinter import Tk, StringVar, ttk,messagebox
+from tkinter import ttk
+import random
+import time;
+import datetime
+
+def main():
+    root = Tk()
+    
+    app = Window1(root)
+
+class Window1:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Pharmacy Management System")
+        self.master.geometry('1350x750+0+0')
+        self.frame = Frame(self.master)
+        self.frame.pack()
+        
+        self.Username = StringVar()
+        self.Password = StringVar()
+
+        self.LabelTitle = Label(self.frame, text = 'Pharmacy Management System', font = ('arial', 50, 'bold'), bd =20)
+        self.LabelTitle.grid(row = 0, column=0, columnspan=2, pady=40)
+
+
+        self.Loginframe1 = Frame(self.frame, width=1010,height=300, bd =20, relief= 'ridge')
+        self.Loginframe1.grid(row = 1, column=0)
+        
+        self.Loginframe2 = Frame(self.frame, width=1010,height=100 ,bd =20,relief= 'ridge')
+        self.Loginframe2.grid(row = 2, column=0)
+        
+        self.Loginframe3 = Frame(self.frame, width=1010,height=200, bd =20,relief= 'ridge')
+        self.Loginframe3.grid(row = 3, column=0, pady=2)
+#=============================================================================================================================================
+        self.lblUsername = Label(self.Loginframe1, text = 'Username', font = ('arial', 30, 'bold'), bd =22)
+        self.lblUsername.grid(row = 0, column = 0 )
+        self.txtUsername = Entry(self.Loginframe1, font = ('arial', 30, 'bold'), bd =20, textvariable = self.Username)
+        self.txtUsername.grid(row = 0, column=1, columnspan=2)
+
+        self.lblPassword = Label(self.Loginframe1, text = 'Password', font = ('arial', 30, 'bold'), bd =22)
+        self.lblPassword.grid(row = 1, column = 0)
+        self.txtPassword = Entry(self.Loginframe1,  font = ('arial', 30, 'bold'), bd =22, textvariable = self.Password)
+        self.txtPassword.grid(row = 1, column=1, columnspan=2, padx = 85)
+
+
+#===========================================================================================================================================
+
+#===========================================================================================================================================
+        self.btnLogin = Button(self.Loginframe2, text = 'LogIn', width=17, font = ('arial', 20, 'bold'), command = self.Login__System)
+        self.btnLogin.grid(row =0, column = 0)
+
+        self.btnReset = Button(self.Loginframe2, text = 'Reset', width=17, font = ('arial', 20, 'bold'),command = self.Reset)
+        self.btnReset.grid(row =0, column = 1)
+
+        self.btnExit = Button(self.Loginframe2, text = 'Exit',width=17, font = ('arial', 20, 'bold'), command = self.iExit)
+        self.btnExit.grid(row =0, column = 2)
+
+#==============================================================================================================================================
+        self.btnRegistration = Button(self.Loginframe3, text = 'Patient Registration System', state = DISABLED, command = self.Registration__window)
+        self.btnRegistration.grid(row =0, column = 0)
+        
+        self.btnHospital = Button(self.Loginframe3, text = 'Hospital Management System', state= DISABLED, command = self.Hospital__window)
+        self.btnHospital.grid(row =0, column = 1)
+#====================================================================================================================================================
+
+    def Login__System(self):
+        user =self.Username.get()
+        pas = self.Password.get()
+
+        if user == "me" and pas=="1234":
+            self.btnRegistration.config(state=NORMAL)
+            self.btnHospital.config(state=NORMAL)
+        else:
+            tkinter.messagebox.askyesno("Pharmacy Management System", "Invalid details")
+            self.btnRegistration.config(state=DISABLED)
+            self.btnHospital.config(state=DISABLED)
+            self.Username.set("")
+            self.Password.set("")
+            self.txtUsername.focus()
+
+    def Reset(self):
+        self.btnRegistration.config(state=DISABLED)
+        self.btnHospital.config(state=DISABLED)
+        self.Username.set("")
+        self.Password.set("")
+        self.txtUsername.focus()
+
+    def iExit(self):
+        self.iExit = tkinter.messagebox.askyesno("Pharmacy Management System", "Confirm if you want to exit?")
+        if self.iExit>0:
+            self.master.destroy()
+            return
+            
+#===============================================================================================================================================
+    def Registration__window(self):
+        self.newWindow = Toplevel(self.master)
+        self.app= Window2(self.newWindow)
+
+    def Hospital__window(self):
+        self.newWindow = Toplevel(self.master)
+        self.app= Window3(self.newWindow)
+
+    
+class Window2:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Patient Registration System")
+        self.master.geometry('1350x750+0+0')
+        self.frame = Frame(self.master)
+        self.frame.pack()
+        LeftMayFrame= Frame(self.master, width=1000, height=650, bd=8, relief="raise")
+        LeftMayFrame.pack(side=LEFT)
+        RightMayFrame= Frame(self.master, width = 350,height = 650, bd= 8, relief="raise")
+        RightMayFrame.pack(side=RIGHT)
+
+        LeftMayFrame1= Frame(LeftMayFrame, width=1000, height=100, bd=8, relief="raise")
+        LeftMayFrame1.pack(side=TOP)
+        LeftMayFrame2= Frame(LeftMayFrame, width=1000, height=550, bd=8, relief="raise")
+        LeftMayFrame2.pack(side=TOP)
+
+        RightMayFrame1= Frame(RightMayFrame, width = 350,height = 215, bd= 8, relief="raise")
+        RightMayFrame1.pack(side=TOP)
+        RightMayFrame2= Frame(RightMayFrame, width = 350,height = 415, bd= 8, relief="raise")
+        RightMayFrame2.pack(side=TOP)
+        #===============================RightMayFrame:Images=================================================
+
+
+
+        #=============Variables======================================================
+        DateofOrder=StringVar()
+        value0= StringVar()
+        value1= StringVar()
+        value2= StringVar()
+        value3= StringVar()
+        value4= StringVar()
+        value5= StringVar()
+        value6= StringVar()
+        value7= StringVar()
+        value8= StringVar()
+        value9= StringVar()
+        value10= StringVar()
+        value11= StringVar()
+        value12= StringVar()
+
+
+        def Mark_Register():
+            if value0.get()=="/":
+                value1.set("/")
+                value2.set("/")
+                value3.set("/")
+                value4.set("/")
+                value5.set("/")
+                value6.set("/")
+                value7.set("/")
+                value8.set("/")
+                value9.set("/")
+                value10.set("/")
+                value11.set("/")
+
+            elif value0.get()=="0":
+                value1.set("0")
+                value2.set("0")
+                value3.set("0")
+                value4.set("0")
+                value5.set("0")
+                value6.set("0")
+                value7.set("0")
+                value8.set("0")
+                value9.set("0")
+                value10.set("0")
+                value11.set("0")
+
+            elif value0.get()=="L":
+                value1.set("L")
+                value2.set("L")
+                value3.set("L")
+                value4.set("L")
+                value5.set("L")
+                value6.set("L")
+                value7.set("L")
+                value8.set("L")
+                value9.set("L")
+                value10.set("L")
+                value11.set("L")
+
+            elif value0.get()=="A":
+                value1.set("A")
+                value2.set("A")
+                value3.set("A")
+                value4.set("A")
+                value5.set("A")
+                value6.set("A")
+                value7.set("A")
+                value8.set("A")
+                value9.set("A")
+                value10.set("A")
+                value11.set("A")
+
+            elif value0.get()=="S":
+                value1.set("S")
+                value2.set("S")
+                value3.set("S")
+                value4.set("S")
+                value5.set("S")
+                value6.set("S")
+                value7.set("S")
+                value8.set("S")
+                value9.set("S")
+                value10.set("S")
+                value11.set("S")
+                
+            elif value0.get()==" ":
+                value1.set(" ")
+                value2.set(" ")
+                value3.set(" ")
+                value4.set(" ")
+                value5.set(" ")
+                value6.set(" ")
+                value7.set(" ")
+                value8.set(" ")
+                value9.set(" ")
+                value10.set(" ")
+                value11.set("")
+
+
+        def Reset():
+            value0.set("")
+            value1.set("")
+            value2.set("")
+            value3.set("")
+            value4.set("")
+            value5.set("")
+            value6.set("")
+            value7.set("")
+            value8.set("")
+            value9.set("")
+            value10.set("")
+            value11.set("")
+
+        def iExit():
+            iExit = messagebox.askyesno("Exit PatientRegistration System","Do you want?")
+            if iExit>0:
+                root.destroy()
+                return
+            
+        #=============Components======================================================
+
+        DateofOrder.set(time.strftime("%d/%m/%Y"))
+
+        #=============LeftMayFrame1======================================================
+        lblNo=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="No'",bd=15)
+        lblNo.grid(row=0,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="PatientNo'",bd=15)
+        lblPatientNo.grid(row=0,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="PatientName'",bd=15)
+        lblPatientName.grid(row=0,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame1, font = ("arial",10,"bold"),text="WardNo'",bd=15)
+        lblPatientWard.grid(row=0,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame1, textvariable=value0,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=0,column=4)
+
+        btnFill=Button(LeftMayFrame1,text='Fill', padx=2,pady=2,bd=2, fg="black", font=('Arial',10,"bold"),width=12, height=1,command=Mark_Register).grid(row=0,column=5)
+
+
+        btnReset=Button(LeftMayFrame1,text='Reset', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1,command=Reset).grid(row=0,column=6)
+
+        btnExit=Button(LeftMayFrame1,text='Exit', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1, command=iExit).grid(row=0,column=7)
+
+        lblDateofOrder=Label(LeftMayFrame1,font=('aril',10,'bold'), textvariable=DateofOrder,padx=2
+                             ,pady=2,bd=2,fg="black", bg='white',relief='sunken')
+        lblDateofOrder.grid(row=0,column=8, sticky=W)
+
+        #=============LeftMayFrame2 row1======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1'",bd=15)
+        lblNo.grid(row=0,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1330'",bd=15)
+        lblPatientNo.grid(row=0,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Dar'",bd=15)
+        lblPatientName.grid(row=0,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="10'",bd=15)
+        lblPatientWard.grid(row=0,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value1,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=0,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black", font=('Arial',10,"bold"),width=12, height=1).grid(row=0,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=0,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=0,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=0,column=8)
+
+        #=============LeftMayFrame2 row2======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="2'",bd=15)
+        lblNo.grid(row=1,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1331'",bd=15)
+        lblPatientNo.grid(row=1,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Darl'",bd=15)
+        lblPatientName.grid(row=1,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="101'",bd=15)
+        lblPatientWard.grid(row=1,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value2,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=1,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=1,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=1,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=1,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=1,column=8)
+
+        #=============LeftMayFrame2 row3======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="3'",bd=15)
+        lblNo.grid(row=2,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1335'",bd=15)
+        lblPatientNo.grid(row=2,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Darlsy'",bd=15)
+        lblPatientName.grid(row=2,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="120'",bd=15)
+        lblPatientWard.grid(row=2,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value3,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=2,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=2,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=2,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=2,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=2,column=8)
+
+        #=============LeftMayFrame2 row4======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="4'",bd=15)
+        lblNo.grid(row=3,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1336'",bd=15)
+        lblPatientNo.grid(row=3,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Cynthia'",bd=15)
+        lblPatientName.grid(row=3,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="123'",bd=15)
+        lblPatientWard.grid(row=3,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value4,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=3,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=3,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=3,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=3,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=3,column=8)
+
+        #=============LeftMayFrame2 row5======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="5'",bd=15)
+        lblNo.grid(row=4,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1345'",bd=15)
+        lblPatientNo.grid(row=4,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Brian'",bd=15)
+        lblPatientName.grid(row=4,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="125'",bd=15)
+        lblPatientWard.grid(row=4,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value5,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=4,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=4,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=4,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=4,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=4,column=8)
+
+        #=============LeftMayFrame2 row6======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="6'",bd=15)
+        lblNo.grid(row=5,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1346'",bd=15)
+        lblPatientNo.grid(row=5,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Travor'",bd=15)
+        lblPatientName.grid(row=5,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="129'",bd=15)
+        lblPatientWard.grid(row=5,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value6,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=5,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=5,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=5,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=5,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=5,column=8)
+
+
+
+        #=============LeftMayFrame2 row7======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="7'",bd=15)
+        lblNo.grid(row=6,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1337'",bd=15)
+        lblPatientNo.grid(row=6,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Daniel'",bd=15)
+        lblPatientName.grid(row=6,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="121'",bd=15)
+        lblPatientWard.grid(row=6,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value7,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=6,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=6,column=5)
+
+
+        btnSace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=6,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=6,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=6,column=8)
+
+
+        #=============LeftMayFrame2 row8======================================================
+        lblNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="8'",bd=15)
+        lblNo.grid(row=7,column=0, sticky=W)
+        lblPatientNo=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="1348'",bd=15)
+        lblPatientNo.grid(row=7,column=1, sticky=W)
+        lblPatientName=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="Ruth'",bd=15)
+        lblPatientName.grid(row=7,column=2, sticky=W)
+        lblPatientWard=Label(LeftMayFrame2, font = ("arial",10,"bold"),text="118'",bd=15)
+        lblPatientWard.grid(row=7,column=3, sticky=W)
+                        
+
+        box = ttk.Combobox(LeftMayFrame2, textvariable=value8,state='readonly')
+        box['values']= (' ','/','L','0','A','S')
+        box.current(0)
+        box.grid(row=7,column=4)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12, height=1).grid(row=7,column=5)
+
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=7,column=6)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=7,column=7)
+
+        btnSpace=Button(LeftMayFrame2,text='', padx=2,pady=2,bd=2, fg="black",
+                        font=('Arial',10,"bold"),width=12,height=1).grid(row=7,column=8)
+
+
+        
+        #====================================================================================================================================
+
+class Window3:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Hospital Management System")
+        self.master.geometry('1350x750+0+0')
+        self.frame = Frame(self.master)
+        self.frame.pack()
+
+if __name__ == "__main__":
+    main()
